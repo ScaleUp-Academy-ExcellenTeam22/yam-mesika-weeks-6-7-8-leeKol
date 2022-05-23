@@ -17,7 +17,7 @@ class Message:
         return 'Message #' + str(self.id) + ', from ' + self.sender + '. ' +\
                self.title + ': ' + self.body
 
-    def len(self) -> int:
+    def __len__(self) -> int:
         """
             The function returns the length of the message body.
             :return: The length of the message body.
