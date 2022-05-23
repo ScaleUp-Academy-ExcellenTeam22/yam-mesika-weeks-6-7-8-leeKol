@@ -13,12 +13,9 @@ def get_encrypted_message_from_image(image_path: str) -> str:
     """
     img = cv2.imread(image_path, 1)
     rows, cols, _ = img.shape
-    encrypted_message = ""
-    for col in range(cols):
-        for row in range(rows):
-            if all(img[row, col] == [1, 1, 1]):
-                encrypted_message += chr(row)
-    return encrypted_message
+    encrypted_message = [chr(row) if all(img[row, col] == [1, 1, 1]) else ''
+                         for col in range(cols) for row in range(rows)]
+    return ''.join(encrypted_message)
 
 
 if __name__ == '__main__':
